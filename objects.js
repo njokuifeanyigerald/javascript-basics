@@ -50,54 +50,98 @@
 // }
 // Ifeanyi.greet(Ifeanyi) // it will work but its not ideal
 
-var Ifeanyi= {
-    name:"ifeanyi",
-    age: 21,
-    skills:["python", "JavaScript", "BootStrap"],
-    "favourite food": "spaghetti",
-    greet: function(){
-        // using the this object 
-        console.log('hey you am' , this.name)
-    }
-}
-var brecker = {
-    name: "brecker Jnr",
-    greet: Ifeanyi.greet
-}
+// var Ifeanyi= {
+//     name:"ifeanyi",
+//     age: 21,
+//     skills:["python", "JavaScript", "BootStrap"],
+//     "favourite food": "spaghetti",
+//     greet: function(){
+//         // using the this object 
+//         console.log('hey you am' , this.name)
+//     }
+// }
+// var brecker = {
+//     name: "brecker Jnr",
+//     greet: Ifeanyi.greet
+// }
 
-var chinedum = {
-    name:"sugar man",
-    age: 21,
-    skills:["python", "JavaScript", "BootStrap"],
-    "favourite food": "spaghetti",
-    greet: function(name,mood){
-        name = name || "Greatest",
-        mood = mood || "great"
-        console.log('Hello ' + name + " I am "+ this.name + " i am in a "+ mood+ " mood")
-    }
-}
+// var chinedum = {
+//     name:"sugar man",
+//     age: 21,
+//     skills:["python", "JavaScript", "BootStrap"],
+//     "favourite food": "spaghetti",
+//     greet: function(name,mood){
+//         name = name || "Greatest",
+//         mood = mood || "great"
+//         console.log('Hello ' + name + " I am "+ this.name + " i am in a "+ mood+ " mood")
+//     }
+// }
 
-// using this object
-Ifeanyi.greet() 
-brecker.greet()
+// // using this object
+// Ifeanyi.greet() 
+// brecker.greet()
 
 //CALL AND APPLY
 
 
 
-var BreckerGreet = brecker.greet;
-BreckerGreet.call(Ifeanyi)
-BreckerGreet.call({name:"mmesoma"})
+// var BreckerGreet = brecker.greet;
+// BreckerGreet.call(Ifeanyi)
+// BreckerGreet.call({name:"mmesoma"})
 
-brecker.greet.apply(Ifeanyi)
-chinedum.greet()
-var chinedumGreet = chinedum.greet
-chinedumGreet.call({name: "chinedum"}, "man", "angry")
-// apply first takes the context object
-chinedum.greet.apply(chinedum, ["uncle", "sad"])
-chinedum.greet.apply(chinedum, ["", "Happy"])
+// brecker.greet.apply(Ifeanyi)
+// chinedum.greet()
+// var chinedumGreet = chinedum.greet
+// chinedumGreet.call({name: "chinedum"}, "man", "angry")
+// // apply first takes the context object
+// chinedum.greet.apply(chinedum, ["uncle", "sad"])
+// chinedum.greet.apply(chinedum, ["", "Happy"])
+// //another way
+// var args = ['florence', 'lovly']
+// chinedum.greet.apply(chinedum, args)
 
 // function thisName(){
 //     console.log(this)
 // }
 // thisName()
+
+
+
+// PROTOTYPES PART1
+
+var personProtoype = {
+    name: "annoymous",
+    greet: function(name,mood){
+        name = name || "Greatest",
+        mood = mood || "great"
+        console.log('Hello ' + name + 
+            " I am "+ this.name + " i am in a " 
+            + mood+ " mood")
+    },
+
+    species: "Homo Sapien"
+
+}
+// gerald = new personProtoype //wont work not a constructor
+// gerald.name = "gerald"  //wont work not a constructor
+// gerald.greet() //wont work not a constructor
+
+function Person(name){
+    this.name = name;
+}
+
+gerald = new Person("Gerald");  //go to console n type Gerald
+
+Person.prototype = personProtoype;
+gerald = new Person("Gerald");
+nedu = new Person('chinedum')
+// nedu.species = "human"  // it will change wat nedu object looks like
+// console.log(gerald.__proto__.name)
+
+Person.prototype.species = "Human"  // it will change the specie in personProtoype
+Person.prototype.color = "skyblue"
+
+
+
+
+// PROTOTYPES PART2
