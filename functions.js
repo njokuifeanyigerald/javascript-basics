@@ -84,21 +84,21 @@
 // DOM  = document Object model 
 //  for the forms
 //document is part of javascript DOM not language feature
-var button = document.getElementById("action")
-var input = document.getElementById("text_field")
+// var button = document.getElementById("action")
+// var input = document.getElementById("text_field")
 
-button.onclick = function(){
-    console.log('heyy')
-};  //annoymous function
-button.onclick = function(){
-    console.log('yellow')
-};   //it can only be called once i.e onclick
+// button.onclick = function(){
+//     console.log('heyy')
+// };  //annoymous function
+// button.onclick = function(){
+//     console.log('yellow')
+// };   //it can only be called once i.e onclick
 
-button.addEventListener('click', function(){
-    console.log("hello")
-})
+// button.addEventListener('click', function(){
+//     console.log("hello")
+// })
 
-button.addEventListener('click', function(){
-    console.log("hello Africa")
-    input.setAttribute('value', 'like damm like damm damm damm')
-})
+// button.addEventListener('click', function(){
+//     console.log("hello Africa")
+//     input.setAttribute('value', 'like damm like damm damm damm')
+// })

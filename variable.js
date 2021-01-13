@@ -1,14 +1,14 @@
 // variable basics
 // somefu(1,"abc") 42 * 3.14,   an array["re", "gd","sdds"]
 
-var color = "red"  ;
-var div = document.getElementById('home');
+// var color = "red"  ;
+// var div = document.getElementById('home');
 
 // document.getElementById('home').style.background = "black"
 // document.getElementById('home').style.color = "white"
 
-div.style.background = "skyblue";
-div.style.color = "white";
+// div.style.background = "skyblue";
+// div.style.color = "white";
 
 // NAMING
 // it could start with a-z A-Z _ $ 0-9
