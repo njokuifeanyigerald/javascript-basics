@@ -9,7 +9,7 @@
 
 // the page doesnt even need to reload to order to update...it a good thing n bad thing
 // var request = new XMLHttpRequest();
-// request.open('GET', 'data.txt', false); // false its to make our code asynchronous
+// request.open('GET', 'data.txt', false); // false its to make our code synchronous
 // request.send();
 // if(request.status === 200){
 //     console.log(request)
@@ -45,17 +45,94 @@
 
 
 // making it compatible with internet explorer or old browser
+// var request;
+// if(window.XMLHttpRequest){
+//     request = new XMLHttpRequest()
+// }else{
+//     request = new ActiveXObject('Microsoft.XMLHTTP')
+// }
+// request.open('GET', 'data.txt'); 
+// request.onreadystatechange = function(){
+//     if(request.readyState === 4 && request.status === 200) {
+//         console.log(request);
+//         document.writeln(request.responseText);
+//     }
+// }
+// request.send()
+
+
+// MODIFYING THE DOM
+
+// modifying elements with getElementByTagName
+// var request;
+// if(window.XMLHttpRequest){
+//     request = new XMLHttpRequest()
+// }else{
+//     request = new ActiveXObject('Microsoft.XMLHTTP')
+// }
+// request.open('GET', 'data.txt'); 
+// request.onreadystatechange = function(){
+//     if(request.readyState === 4 && request.status === 200) {
+//         var modify = document.getElementsByTagName('li');
+//         // modify[5].innerHTML = request.responseText;
+//         // var modify2  = document.getElementsByTagName('ul')[1].getElementsByTagName('li');
+//         // modify2[3].innerHTML = request.responseText;
+//         for(var i = 0; i < modify.length; i++){
+//             modify[i].innerHTML = request.responseText
+//         }
+//     }
+// }
+// request.send()
+
+
+ // updating the dom with getElementById
+ var request;
+if(window.XMLHttpRequest){
+    request = new XMLHttpRequest()
+}else{
+    request = new ActiveXObject('Microsoft.XMLHTTP')
+}
+ request.open('GET', 'data.txt'); 
+ request.onreadystatechange = function(){
+     if(request.readyState === 4 && request.status === 200) {
+        var modify = document.getElementById('update');
+        modify.innerHTML = request.responseText
+         
+     }
+ }
+ request.send()
+
+
+// parsing datain xml
+//originally created to read data in xml = xtensible markup language
+//  much like html but you get to make ya own tags
+
 var request;
 if(window.XMLHttpRequest){
     request = new XMLHttpRequest()
 }else{
     request = new ActiveXObject('Microsoft.XMLHTTP')
 }
-request.open('GET', 'data.txt'); 
-request.onreadystatechange = function(){
-    if(request.readyState === 4 && request.status === 200) {
-        console.log(request);
-        document.writeln(request.responseText);
-    }
-}
-request.send()
+ request.open('GET', 'data.xml'); 
+ request.onreadystatechange = function(){
+     if(request.readyState === 4 && request.status === 200) {
+        // console.log(request)
+        // console.log(request.responseXML.getElementsByTagName('name')[0])
+        // console.log(request.responseXML.getElementsByTagName('name')[0].firstChild)
+        // console.log(request.responseXML.getElementsByTagName('name')[0].childNodes[0])
+        console.log(request.responseXML.getElementsByTagName('name')[0].firstChild.nodeValue)
+        // console.log(request.responseXML.getElementsByTagName('name')[0].firstChild.nodeValue)
+
+
+        var items = request.responseXML.getElementsByTagName('name');
+        var output = '<ul>';
+        for (var i = 0; i <items.length; i++){
+            output += '<li>' +
+            items[i].firstChild.nodeValue + '</li>';
+        }
+        output  +=  '</ul>';
+
+        document.getElementById('update').innerHTML = output
+     }
+ }
+ request.send()
