@@ -148,13 +148,13 @@
 // }while(command)
 
 // FOREACH
-var at = ["gerald","ifeanyi", "chinedum"];
-for(var i = 0; i < at.length; i++){
-    console.log(at[i])
-    // console.log(i)
-    at[i] = 5
-    console.log(at[i])
-}
+// var at = ["gerald","ifeanyi", "chinedum"];
+// for(var i = 0; i < at.length; i++){
+//     console.log(at[i])
+//     // console.log(i)
+//     at[i] = 5
+//     console.log(at[i])
+// }
 // console.log(at)
 // for(let element of at){
 //     console.log(element)

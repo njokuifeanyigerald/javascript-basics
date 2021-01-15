@@ -86,53 +86,115 @@
 
 
  // updating the dom with getElementById
- var request;
-if(window.XMLHttpRequest){
-    request = new XMLHttpRequest()
-}else{
-    request = new ActiveXObject('Microsoft.XMLHTTP')
-}
- request.open('GET', 'data.txt'); 
- request.onreadystatechange = function(){
-     if(request.readyState === 4 && request.status === 200) {
-        var modify = document.getElementById('update');
-        modify.innerHTML = request.responseText
+// var request;
+// if(window.XMLHttpRequest){
+//     request = new XMLHttpRequest()
+// }else{
+//     request = new ActiveXObject('Microsoft.XMLHTTP')
+// }
+//  request.open('GET', 'data.txt'); 
+//  request.onreadystatechange = function(){
+//      if(request.readyState === 4 && request.status === 200) {
+//         var modify = document.getElementById('update');
+//         modify.innerHTML = request.responseText
          
-     }
- }
- request.send()
+//      }
+//  }
+//  request.send()
 
 
-// parsing datain xml
+
+// parsing data in xml
+
 //originally created to read data in xml = xtensible markup language
 //  much like html but you get to make ya own tags
 
-var request;
-if(window.XMLHttpRequest){
-    request = new XMLHttpRequest()
-}else{
-    request = new ActiveXObject('Microsoft.XMLHTTP')
-}
- request.open('GET', 'data.xml'); 
- request.onreadystatechange = function(){
-     if(request.readyState === 4 && request.status === 200) {
-        // console.log(request)
-        // console.log(request.responseXML.getElementsByTagName('name')[0])
-        // console.log(request.responseXML.getElementsByTagName('name')[0].firstChild)
-        // console.log(request.responseXML.getElementsByTagName('name')[0].childNodes[0])
-        console.log(request.responseXML.getElementsByTagName('name')[0].firstChild.nodeValue)
-        // console.log(request.responseXML.getElementsByTagName('name')[0].firstChild.nodeValue)
+// var request;
+// if(window.XMLHttpRequest){
+//     request = new XMLHttpRequest()
+// }else{
+//     request = new ActiveXObject('Microsoft.XMLHTTP')
+// }
+//  request.open('GET', 'data.xml'); 
+//  request.onreadystatechange = function(){
+//      if(request.readyState === 4 && request.status === 200) {
+//         // console.log(request)
+//         // console.log(request.responseXML.getElementsByTagName('name')[0])
+//         // console.log(request.responseXML.getElementsByTagName('name')[0].firstChild)
+//         // console.log(request.responseXML.getElementsByTagName('name')[0].childNodes[0])
+//         // console.log(request.responseXML.getElementsByTagName('name')[0].firstChild.nodeValue)
+//         // console.log(request.responseXML.getElementsByTagName('name')[0].firstChild.nodeValue)
 
 
-        var items = request.responseXML.getElementsByTagName('name');
-        var output = '<ul>';
-        for (var i = 0; i <items.length; i++){
-            output += '<li>' +
-            items[i].firstChild.nodeValue + '</li>';
+//         var items = request.responseXML.getElementsByTagName('name');
+//         var output = '<ul>';
+//         for (var i = 0; i <items.length; i++){
+//             output += '<li>' +
+//             items[i].firstChild.nodeValue + '</li>';
+//         }
+//         output  +=  '</ul>';
+
+//         document.getElementById('update').innerHTML = output
+//      }
+//  }
+//  request.send()
+
+
+
+//  // parsing data in json
+
+// var request;
+// if(window.XMLHttpRequest){
+//     request = new XMLHttpRequest()
+// }else{
+//     request = new ActiveXObject('Microsoft.XMLHTTP')
+// }
+//  request.open('GET', 'ajax.json'); 
+//  request.onreadystatechange = function(){
+//      if(request.readyState === 4 && request.status === 200) {
+        
+//         var items = JSON.parse(request.responseText)
+//         console.log(items)
+//         var output = '<ul>' ;
+//         for(var key in items){
+//             output += '<li>' + items[key].name + '</li>';
+//         }
+//         output += '</ul>';
+//         document.getElementById('alaye').innerHTML = output;
+
+//      }
+//  }
+//  request.send();
+
+
+
+
+//using event driven javascript
+// var btnm
+
+
+var btn = document.getElementById('btn');
+btn.onclick = function(){
+    var request;
+    if(window.XMLHttpRequest){
+        request = new XMLHttpRequest()
+    }else{
+        request = new ActiveXObject('Microsoft.XMLHTTP')
+    }
+    request.open('GET', 'ajax.json'); 
+    request.onreadystatechange = function(){
+        if(request.readyState === 4 && request.status === 200) {
+            
+            var items = JSON.parse(request.responseText)
+            console.log(items)
+            var output = '<ul>' ;
+            for(var key in items){
+                output += '<li>' + items[key].short + '</li>';
+            }
+            output += '</ul>';
+            document.getElementById('alaye').innerHTML = output;
+
         }
-        output  +=  '</ul>';
-
-        document.getElementById('update').innerHTML = output
-     }
- }
- request.send()
+    }
+    request.send();
+}
